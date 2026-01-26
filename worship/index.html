@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Worship & Music | Gospel Crusade Church</title>
+    <link rel="stylesheet" href="style.css">
+  <style>
+    /* ================= RESET ================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f9fafb;
+      color: #1f2937; /* dark gray text */
+      line-height: 1.6;
+    }
+
+    /* ================= HERO ================= */
+    .hero-bg {
+      background: url('/images/backgroundhero.jpg') center/cover no-repeat;
+      height: 50vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+    }
+
+    .hero-bg h1 {
+      color: #fff;
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      position: relative;
+    }
+
+    /* ================= NAVIGATION ================= */
+    nav {
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      padding: 1rem 0;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      list-style: none;
+      font-weight: 500;
+    }
+
+    nav ul li a {
+      color: #374151; /* warm gray */
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #1d4ed8; /* blue */
+      font-weight: 700;
+    }
+
+    /* ================= SECTIONS ================= */
+    section {
+      padding: 3rem 1rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    /* ================= CARDS ================= */
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+      .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .bg-white {
+      background-color: #ffffff;
+    }
+
+    .rounded-lg {
+      border-radius: 0.75rem;
+    }
+
+    .shadow-md {
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .p-4 { padding: 1rem; }
+
+    /* ================= IMAGES & GALLERY ================= */
+    .gallery img {
+      width: 100%;
+      height: 12rem;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* ================= AUDIO ================= */
+    audio {
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+
+    /* ================= VIDEO ================= */
+    .video-card iframe {
+      width: 100%;
+      height: 200px;
+      border-radius: 0.5rem;
+    }
+
+    /* ================= RESOURCES ================= */
+    section a {
+      display: block;
+      color: #1d4ed8;
+      text-decoration: none;
+      font-weight: 500;
+      margin: 0.5rem 0;
+      transition: color 0.3s ease;
+    }
+
+    section a:hover {
+      text-decoration: underline;
+    }
+
+    /* Accessibility helpers */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Staff / Media Team styling: smaller, circular images and centered cards */
+    .staff-grid {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    /* Layout: place Media and Musician side-by-side on wider screens */
+    .teams-row {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .teams-row {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+      .team-column { flex: 1; }
+      .team-column .staff-grid { justify-content: flex-start; }
+    }
+
+    .staff-card {
+      width: 140px;
+      text-align: center;
+    }
+
+    .staff-card img {
+      width: 96px;
+      height: 96px;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 0.5rem;
+    }
+
+    .staff-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    /* ================= FOOTER ================= */
+    footer {
+      background-color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+      color: #6b7280; /* gray */
+      box-shadow: inset 0 1px 0 rgba(0,0,0,0.05);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <header class="hero-bg">
+    <h1>Behind the Scenes: Worship & Media Teams</h1>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="/belong/index.html">Belong & Grow</a></li>
+      <li><a href="/mission-serve/index.html">Mission & Serve</a></li>
+      <li><a href="/prayer-care/index.html">Prayer & Care</a></li>
+      <li><a href="index.html" class="active">Worship & Music</a></li>
+      <li><a href="/giving/index.html">Giving</a></li>
+      <li><a href="/resources/index.html">Resources</a></li>
+    </ul>
+  </nav>
+
+  
+  <div class="teams-row">
+  <section class="staff-strip team-column" aria-labelledby="media-heading">
+  <h2 id="media-heading">Media Team</h2>
+
+  <!-- Dropdown to show / filter Media Team -->
+  <label for="mediaSelect" class="sr-only">Media Team</label>
+  <select id="mediaSelect" aria-controls="mediaTeam" aria-expanded="false"
+          class="px-3 py-2 border rounded mt-2 w-full md:w-64">
+    <option value="none">Hide Media Team</option>
+    <option value="all">Show All Members</option>
+    <option value="Tech1">Tech1</option>
+    <option value="Skaina G. Mindron">Harold G. Mindron</option>
+    <option value="Steve Dely">Steve Dely</option>
+    <option value="Hudson Charles">Hudson Charles</option>
+  </select>
+
+  <!-- Media Team Grid -->
+  <div id="mediaTeam" class="staff-grid mt-4 transition-all duration-300">
+    <article class="staff-card" data-name="Tech1">
+      <img src="../images/Tech1.jpg" alt="Tech1" />
+      <h3>Tech1</h3>
+      <p>Media Team</p>
+    </article>
+    <article class="staff-card" data-name="Harold G. Mindron">
+      <img src="../images/tech3.jpg" alt="Harold G. Mindron" />
+      <h3>Harold G. Mindron</h3>
+      <p>Media Team</p>
+    </article>
+    <article class="staff-card" data-name="tech2">
+      <img src="../images/tech2.jpg" alt="tech2" />
+      <h3>Tech2</h3>
+      <p>Media Team</p>
+    </article>
+  </div>
+</section>
+  
+  <!-- Musician Team -->
+  <section class="staff-strip team-column" aria-labelledby="musician-heading">
+    <h2 id="musician-heading">Musician Team</h2>
+
+    <!-- Dropdown to show / filter Musician Team -->
+    <label for="musicianSelect" class="sr-only">Musician Team</label>
+    <select id="musicianSelect" aria-controls="musicianTeam" aria-expanded="false"
+            class="px-3 py-2 border rounded mt-2 w-full md:w-64">
+      <option value="none">Hide Musician Team</option>
+      <option value="all">Show All Members</option>
+      <option value="Hudson Charles">Hudson Charles</option>
+      <option value="Skaina G. Mindron">Harold G. Mindron</option>
+      <option value="Steve Dely">Steve Dely</option>
+    </select>
+
+    <!-- Musician Team Grid -->
+    <div id="musicianTeam" class="staff-grid mt-4 transition-all duration-300">
+      <article class="staff-card" data-name="musician1">
+        <img src="/images/musician1.jpg" alt="musician1" />
+        <h3>P. Amstrong B</h3>
+        <p>Guitar</p>
+      </article>
+      <article class="staff-card" data-name="Ezechiel">
+        <img src="../images/musician2.jpg" alt="Ezechiel" />
+        <h3>Ezechiel</h3>
+        <p>Drum</p>
+      </article>
+      <article class="staff-card" data-name="Ezechiel">
+        <img src="../images/musician3.jpg" alt="P. Ernson" />
+        <h3>P. Ernson</h3>
+        <p>Sound/Keys</p>
+      </article>
+      <article class="staff-card" data-name="Wilmaer">
+        <img src="../images/musician4.jpg" alt="Wilmaer" />
+        <h3>Wilmaer</h3>
+        <p>Keys/Bass</p>
+      </article>
+
+    </div>
+  </section>
+</div>
+
+<!-- Worship Live Stream Section -->
+<section style="background:#f3f4f6;" class="py-8">
+  <h2 class="text-2xl font-semibold mb-6 text-center">Worship Live Stream</h2>
+  
+  <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+    
+    <!-- Live Stream 1 -->
+    <div class="video-card bg-white p-4 rounded-lg shadow-md">
+      <iframe 
+        width="100%" 
+        height="200" 
+        src="https://www.youtube.com/embed/LIVE_STREAM_ID1?autoplay=1" 
+        title="Live Worship Service 1" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+      <p class="mt-2 text-center font-medium" style="text-align:center;">Worship Service</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= PAST EVENTS ================= -->
+<section class="past-events py-12 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-8">Events</h2>
+
+    <div class="flex gap-6 overflow-x-auto pb-4">
+      <!-- Event 1 -->
+      <div class="event-card bg-white shadow-md rounded-lg overflow-hidden flex-shrink-0 w-72">
+        <img src="../images/flyer/flyer3.jpg" alt="Event Flyer 1" class="w-full h-56 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold mb-2">Sunday Service</h3>
+          <p class="text-sm text-gray-600 mb-2">Every Sunday at 1:00 PM - 3:00 PM</p>
+          <p class="text-gray-700 text-sm">Join us for service, prayer and Worship.</p>
+        </div>
+      </div>
+
+      <!-- Event 2 -->
+      <div class="event-card bg-white shadow-md rounded-lg overflow-hidden flex-shrink-0 w-72">
+        <img src="../images/flyer/flyer1.jpg" alt="Event Flyer 2" class="w-full h-56 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold mb-2">Online Service</h3>
+          <p class="text-sm text-gray-600 mb-2">TBD</p>
+          <p class="text-gray-700 text-sm"></p>
+        </div>
+      </div>
+
+      <!-- Event 3 -->
+      <div class="event-card bg-white shadow-md rounded-lg overflow-hidden flex-shrink-0 w-72">
+        <img src="../images/flyer/flyer2.jpg" alt="Event Flyer 3" class="w-full h-56 object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold mb-2">Past Event</h3>
+          <p class="text-sm text-gray-600 mb-2">3 days Conference</p>
+          <p class="text-gray-700 text-sm"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Resources Section -->
+  <section style="background:#f3f4f6;">
+    <h2>Music Resources</h2>
+    <div style="text-align:center;">
+      <a href="../resources/songbook.pdf">Download Songbook (PDF)</a>
+      <a href="../resources/lyrics">Worship Lyrics</a>
+      <a href="../resources/chords">Chords & Sheet Music</a>
+    </div>
+  </section>
+
+   <script src="script.js"></script>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Gospel Crusade Church of Billerica. All rights reserved.
+  </footer>
+
+</body>
+</html>

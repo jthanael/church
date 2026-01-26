@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Serve With Us</title>
+  <link rel="stylesheet" href="serve.css" />
+</head>
+<body>
+
+<header class="serve-hero">
+  <h1>Welcome to Gospel Crusade Church of Billerica </h1>
+  <p>Use your gifts. Build the Kingdom of God. Join a department today.</p>
+</header>
+
+<section class="departments">
+  <h2>Departments Currently in Need</h2>
+  <div class="dept-grid">
+
+    <div class="dept-card">
+      <h3>🎥 Media Team</h3>
+      <p>Camera operation, livestream, sound, and slides.</p>
+    </div>
+
+    <div class="dept-card">
+      <h3>👶 Children’s Ministry</h3>
+      <p>Teach, assist, and care for children during services.</p>
+    </div>
+
+    <div class="dept-card">
+      <h3>🙏 Hospitality Team</h3>
+      <p>Welcome guests, seating assistance, and coordination.</p>
+    </div>
+
+    <div class="dept-card">
+      <h3>🎵 Worship Team</h3>
+      <p>Singers and musicians committed to worship.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="serve-form-section">
+  <h2>Sign Up to Serve</h2>
+
+  <!-- Replace action with Formspree or backend later -->
+  <form class="serve-form" action="#" method="POST">
+
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" name="name" required />
+    </div>
+
+    <div class="form-group">
+      <label>Email Address</label>
+      <input type="email" name="email" required />
+    </div>
+
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input type="tel" name="phone" />
+    </div>
+
+    <div class="form-group">
+      <label>Department Interested In</label>
+      <select name="department" required>
+        <option value="">Select a department</option>
+        <option>Media Team</option>
+        <option>Children’s Ministry</option>
+        <option>Hospitality Team</option>
+        <option>Worship Team</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Tell us about your experience or interest</label>
+      <textarea name="message" rows="4"></textarea>
+    </div>
+
+    <button type="submit" class="serve-btn">Join a Team</button>
+
+  </form>
+</section>
+
+</body>
+</html>

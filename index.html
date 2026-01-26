@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gospel Crusade Church of Billerica</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Basic Reset */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: Arial, sans-serif; line-height:1.6; color:#1f1f1f; }
+    
+    a { color: inherit; text-decoration: none; }
+    a:focus { outline: 3px solid #1e90ff; outline-offset: 2px; }
+
+    header { position: relative; height: 60vh; display: flex; flex-direction: column; background: none; }
+    .overlay { position:absolute; inset:0; background:rgba(0,0,0,0.5); z-index:0; }
+
+    .skip-link { position:absolute; top:-40px; left:0; background:#1e90ff; color:white; padding:8px; z-index:100; }
+    .skip-link:focus { top:0; }
+
+    .top-nav { display:flex; justify-content:space-between; align-items:center; padding:1rem; position:relative; z-index:2; }
+    .brand { display:flex; align-items:center; gap:0.5rem; }
+    .logo { height:50px; width:auto; }
+    .nav-links { list-style:none; display:flex; gap:1rem; }
+    .nav-links li { position: relative; }
+    .nav-links a { padding:0.5rem; display:block; }
+
+    .menu-toggle { display:none; background:none; border:none; color:white; font-size:1.5rem; }
+    
+    .hero-content { position:relative; z-index:2; flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:1rem; color:white; }
+    .hero-content h1 { font-size:2rem; margin-bottom:0.5rem; }
+    .hero-content p { font-size:1.2rem; max-width:600px; }
+
+    /* Responsive Nav */
+    @media(max-width:768px){
+      .nav-links { display:none; flex-direction:column; background:#333; position:absolute; top:100%; right:0; width:200px; }
+      .nav-links.show { display:flex; }
+      .menu-toggle { display:block; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header / Hero -->
+   
+<header role="banner" class="hero relative h-[60vh] w-full flex flex-col bg-cover bg-center hero-bg">
+
+  <!-- Floating Ball -->
+  <img src="../images/ball.jpg" alt="Floating Ball" class="ball">
+
+  <!-- Gradient Overlay -->
+  <div class="absolute inset-0 pointer-events-none hero-overlay"></div>
+
+  <!-- Top Navigation -->
+  <nav class="top-nav relative z-10 flex justify-between items-center p-4 bg-off-white/90">
+    <div class="brand flex items-center gap-2">
+      <img src="../images/logo.jpg" alt="Gospel Crusade Church of Billerica logo" class="logo h-12 w-auto" />
+      <span class="church-name text-warm-gray font-semibold text-sm md:text-base">
+        GOSPEL CRUSADE CHURCH OF BILLERICA
+      </span>
+    </div>
+
+    <button class="menu-toggle text-warm-gray text-2xl md:hidden" aria-controls="primary-menu" aria-expanded="false">☰</button>
+
+    <ul class="nav-links hidden md:flex list-none gap-4 text-warm-gray" id="primary-menu">
+    <li><a href="../belong/index.html">Belong & Grow</a></li>
+      <li><a href="../serve/serve.html">Mision & Serve</a></li>
+      <li><a href="#">Prayer & Care</a></li>
+      <li><a href="../worship/index.html">Worship & Music</a></li>
+      <li><a href="#">Giving</a></li>
+      <li><a href="#">Resources</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Content -->
+  <div class="hero-content relative z-10 flex-1 flex flex-col justify-center items-center text-center px-4 text-off-white">
+    <h1 class="text-3xl md:text-5xl font-bold mb-4 navy-heading framed-heading">
+      Welcome to Gospel Crusade Church of Billerica
+    </h1>
+
+    <p class="text-lg md:text-xl max-w-2xl mb-6">
+      So welcome each other, just as Christ also welcomed you, to the glory of God. Romans 15:7
+    </p>
+
+    <button onclick="openPopup()" class="cta-button px-6 py-3 font-semibold rounded-md">
+  Join Us This Sunday
+</button>
+
+  </div>
+</header>
+
+<style>
+/* Joyful Home Palette */
+:root {
+  --sky-blue: #87CEEB;
+  --warm-gold: #F2C94C;
+  --coral-peach: #FF7F50;
+  --off-white: #ffffff;
+  --warm-gray: #4A4A4A;
+}
+
+/* Hero background */
+.hero-bg {
+  background-image: url('/images/backgroundhero.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-color: var(--sky-blue); /* fallback if image fails */
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Gradient overlay for readability */
+.hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(135, 206, 235, 0.2) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+}
+
+/* Floating ball animation */
+.ball {
+  position: absolute;
+  right: 2rem;
+  top: 18%;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.25));
+  transform-origin: center;
+  animation: floatSway 6s ease-in-out infinite;
+}
+
+@keyframes floatSway {
+  0%   { transform: translateY(0) translateX(0) rotate(0deg); }
+  25%  { transform: translateY(-10px) translateX(-6px) rotate(-3deg); }
+  50%  { transform: translateY(-18px) translateX(0) rotate(0deg); }
+  75%  { transform: translateY(-10px) translateX(6px) rotate(3deg); }
+  100% { transform: translateY(0) translateX(0) rotate(0deg); }
+}
+
+/* Make the ball smaller on small screens */
+@media (max-width: 640px) {
+  .ball { width: 56px; height:56px; right:1rem; top:14%; animation-duration:5s; }
+}
+
+/* Text shadow for readability */
+.hero-content h1,
+.hero-content p {
+  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* CTA button */
+.cta-button {
+  background-color: var(--warm-gold);
+  color: var(--warm-gray);
+  transition: transform 0.2s, background-color 0.2s;
+}
+.cta-button:hover {
+  background-color: var(--coral-peach);
+  transform: scale(1.05);
+}
+
+/* Text colors */
+.text-off-white { color: var(--off-white); }
+.text-warm-gray { color: var(--warm-gray); }
+
+/* Navigation background */
+.top-nav { background-color: var(--off-white); }
+
+/* ====== Responsive tweaks ====== */
+@media (max-width: 1024px) {
+  .hero-content h1 { font-size: 2.5rem; }
+  .hero-content p { font-size: 1.125rem; }
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(135, 206, 235, 0.25) 50%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-content h1 { font-size: 1.875rem; }
+  .hero-content p { font-size: 1rem; padding: 0 1rem; }
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(135, 206, 235, 0.25) 50%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+  }
+}
+</style>
+
+
+    <!-- Main Content -->
+
+    <main id="main-content">
+
+
+        <!--about-->
+
+<section class="about" id="about">
+  <div class="container">
+    <h2>About / Mission</h2>
+    <p class="mission">
+      At Gospel Crusade Church of Billerica, we are committed to guiding every member toward a deeper connection with God, fostering a welcoming community of faith, service, and spiritual growth. Our vision is to inspire hearts, strengthen families, and impact lives through the teachings of Jesus Christ.
+    </p>
+  </div>
+</section>
+
+<!--live-->
+<section class="live-videos" aria-labelledby="videos-heading">
+  <h2 id="videos-heading">Live & Recent Messages</h2>
+
+  <div class="video-grid">
+    <!-- Live Stream -->
+    <figure class="video-card" data-title="Sunday Service – Live">
+      <iframe 
+        src="https://www.youtube.com/embed/live_stream?channel=UCxxxxxx" 
+        title="Sunday Service Live Stream" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+      <figcaption>
+        <span class="video-title">Sunday Service – Live</span>
+        <span class="video-date">Every Sunday at 10:00 AM</span>
+      </figcaption>
+    </figure>
+
+ <figure class="video-card" data-title="Faith & Growth">
+  <iframe
+    src="https://www.youtube.com/embed/9Lr7aTQHDxs"
+    title="Faith & Growth Message"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+    loading="lazy"
+  ></iframe>
+
+  <figcaption>
+    <span class="video-title">Faith & Growth</span>
+    <span class="video-date">Recent Message</span>
+  </figcaption>
+</figure>
+
+
+    <figure class="video-card" data-title="Prayer Night Message">
+      <iframe 
+        src="https://www.youtube.com/embed/NSzlNFzjq1I" 
+        title="Prayer Night Message" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+      <figcaption>
+        <span class="video-title">Prayer Night Message</span>
+        <span class="video-date">Recent Message</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+
+
+
+    <!-- Staff Section -->
+    <section class="staff-strip" aria-labelledby="staff-heading">
+      <h2 id="staff-heading">Church Leaders</h2>
+      <div class="staff-grid">
+        <article class="staff-card">
+          <img src="../images/seniorP.jpg" alt="Ernson Dely" />
+          <h3>Ernson Dely</h3>
+          <p>Senior Pastor and Head of Staff</p>
+        </article>
+        <article class="staff-card">
+          <img src="../images/skainaG.jpg" alt="Skaina G. Mindron" />
+          <h3>Skaina G. Mindron</h3>
+          <p>Associate Pastor for Missions</p>
+        </article>
+        <article class="staff-card">
+          <img src="../images/steve.jpg" alt="Steve Dely" />
+          <h3>Steve Dely</h3>
+          <p>Associate Pastor </p>
+        </article>
+        <article class="staff-card">
+          <img src="../images/belizaire.jpg" alt="Belizaire" />
+          <h3>Amstrong Belizaire</h3>
+          <p>Associate Pastor</p>
+        </article>
+      </div>
+    </section>
+ 
+<!-- ================= UPCOMING EVENTS ================= -->
+<section class="upcoming-events">
+  <div class="container">
+    <h2>Upcoming Events</h2>
+    <div class="events-grid" id="events-grid">
+      <!-- Events will be injected here by JavaScript -->
+    </div>
+  </div>
+
+
+</section>
+
+<script>
+  // Array of events: just add/remove objects here
+  const events = [
+    {
+      month: "Feb",
+      day: "14",
+      title: "Valentine’s Outreach",
+      description: "Join us as we share love and support with the community. Free refreshments and fellowship.",
+      time: "2:00 PM - 5:00 PM"
+    },
+    {
+      month: "Mar",
+      day: "25",
+      title: "Spring Community Service",
+      description: "Help clean up local parks and spread joy to neighbors in need.",
+      time: "9:00 AM - 12:00 PM"
+    },
+    {
+      month: "Apr",
+      day: "07",
+      title: "Easter Celebration",
+      description: "Special service with music, prayer, and a family-friendly Easter egg hunt.",
+      time: "10:00 AM - 1:00 PM"
+    }
+  ];
+
+  const eventsGrid = document.getElementById('events-grid');
+
+  if(events.length === 0) {
+    // Keep section blank if no events
+    eventsGrid.innerHTML = "";
+  } else {
+    events.forEach(event => {
+      const card = document.createElement('div');
+      card.classList.add('event-card');
+      card.innerHTML = `
+        <div class="event-date">
+          <span class="month">${event.month}</span>
+          <span class="day">${event.day}</span>
+        </div>
+        <div class="event-info">
+          <h3>${event.title}</h3>
+          <p>${event.description}</p>
+          <span class="event-time">${event.time}</span>
+        </div>
+      `;
+      eventsGrid.appendChild(card);
+    });
+  }
+</script>
+
+
+
+
+<!--PRAYER REQUEST-->
+
+<section class="prayer-request" id="prayer-request">
+  <div class="prayer-wrapper">
+    <div class="prayer-info">
+      <h2>Submit a Prayer Request</h2>
+      <p>We believe in the power of prayer. Share your prayer needs with us, and our community will pray for you.</p>
+      <p>Your request is private and will be handled with care.</p>
+    </div>
+
+    <form class="prayer-form" action="#" method="POST">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="John Doe" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+      <label for="prayer">Your Prayer Request</label>
+      <textarea id="prayer" name="prayer" rows="5" placeholder="Type your prayer request here..." required></textarea>
+
+      <label for="anonymous">
+        <input type="checkbox" id="anonymous" name="anonymous">
+        Submit anonymously
+      </label>
+
+      <button type="submit">Submit Prayer</button>
+    </form>
+  </div>
+</section>
+
+
+
+
+
+    </main>
+ 
+
+
+  <footer class="site-footer">
+  <div class="footer-container">
+
+    <div class="footer-column">
+      <h4>Gospel Crusade Church</h4>
+      <p>Building faith, family, and community through the love of Christ.</p>
+    </div>
+
+    <div class="footer-column">
+      <h4>Service Times</h4>
+      <ul>
+        <li>Sunday Worship: 1:00 PM - 3:00 PM</li>
+        <li>Wednesday Bible Study: 7:00 PM</li>
+        <li>Youth Fellowship: Friday 6:30 PM</li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Contact</h4>
+      <ul>
+        <li>30 River St, Billerica, MA 01821, USA</li>
+        <li>(617) 799-392 </li>
+        <li>gospelcrusadeofbillerca@gmail.com</li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#giving">Give</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="../serve/serve.html">Serve</a></li>
+
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Gospel Crusade Church of Billerica. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Modern Sunday Service Popup -->
+<style>
+  /* Overlay */
+  .popup-overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    padding: 1rem;
+    backdrop-filter: blur(4px);
+    transition: opacity 0.3s ease;
+  }
+
+  /* Popup Box */
+  .popup-box {
+    position: relative;
+    background: linear-gradient(135deg, #fef3c7, #6078bbc7);
+    border-radius: 20px;
+    max-width: 500px;
+    width: 100%;
+    padding: 2.5rem 2rem 2rem 2rem;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: all 0.35s ease;
+  }
+
+  /* Show animation */
+  .popup-overlay.show .popup-box {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .popup-box h2 {
+    margin: 0 0 0.7rem 0;
+    font-size: 2rem;
+    color: #0b0c10;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  }
+
+  .popup-box .tagline {
+    margin-bottom: 1.5rem;
+    color: #11161d;
+    font-style: italic;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .service-info {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #111827;
+    font-weight: 500;
+  }
+
+  .service-info p {
+    margin: 0.3rem 0;
+  }
+
+  .address {
+    font-size: 0.9rem;
+    color: #000000;
+  }
+
+  /* Buttons */
+  .popup-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.25s ease;
+  }
+
+  .popup-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(59,130,246,0.4);
+  }
+
+  /* Close button */
+  .close-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    border: none;
+    background: #ef4444;
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+
+  .close-btn:hover {
+    background: #dc2626;
+    transform: scale(1.1);
+  }
+
+  /* Responsive text */
+  @media (max-width: 480px) {
+    .popup-box h2 { font-size: 1.7rem; }
+    .popup-box .tagline { font-size: 0.95rem; }
+    .popup-btn { width: 100%; text-align: center; }
+  }
+</style>
+
+<div id="sundayPopup" class="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+  <div class="popup-box">
+    <button class="close-btn" aria-label="Close popup">×</button>
+    
+    <h2 id="popup-title">Join Us This Sunday!</h2>
+    <p class="tagline">"Jesus answered, 'I am the way, the truth, and the life. No one comes to the Father except through Him.'"</p>
+    
+    <div class="service-info">
+      <p><strong>Sunday Worship Service</strong></p>
+      <p>1:00 PM - 3:00 PM</p>
+      <p class="address">30 River St, Billerica, MA 01821, USA</p>
+    </div>
+
+    <a href="../serve/serve.html" class="popup-btn">See Departments in Need</a>
+  </div>
+</div>
+
+<script>
+const popup = document.getElementById('sundayPopup');
+const closeBtn = popup.querySelector('.close-btn');
+
+function openPopup() {
+  popup.style.display = 'flex';
+  setTimeout(() => popup.classList.add('show'), 20);
+  document.body.style.overflow = 'hidden';
+  popup.querySelector('.popup-box a, .popup-box button')?.focus();
+}
+
+function closePopup() {
+  popup.classList.remove('show');
+  setTimeout(() => {
+    popup.style.display = 'none';
+    document.body.style.overflow = '';
+  }, 350);
+}
+
+closeBtn.addEventListener('click', closePopup);
+
+popup.addEventListener('click', (e) => {
+  if (e.target === popup) closePopup();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && popup.style.display === 'flex') closePopup();
+});
+</script>
+
+
+</body>
+</html>
