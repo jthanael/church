@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Belong & Grow – Life in Community</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Hero Section -->
+<header class="relative w-full h-[80vh] flex items-center justify-center bg-center bg-cover" style="background-image: url('../images/backgroundhero.jpg');">
+  
+  <!-- Dark Overlay -->
+  <div class="absolute inset-0 bg-black/40 z-10"></div>
+
+  <!-- Content -->
+  <div class="hero-content">
+    <h1>More Than a Church - Family in Christ</h1>
+    <p>Welcome to our family</p>
+    <a href="#belong-grow">Learn More</a>
+  </div>
+
+</header>
+
+
+<section class="intro">
+  <p>
+    This gallery represents real moments of connection, service, worship,
+    and spiritual growth. These are not stock images — this is our church family living out faith.
+  </p>
+</section>
+
+<section class="gallery" id="gallery">
+  <img src="../images/photo1.jpg" alt="Church Life Photo 1">
+  <img src="../images/photo2.jpg" alt="Church Life Photo 2">
+  <img src="../images/photo3.jpg" alt="Church Life Photo 3">
+  <img src="../images/photo4.jpg" alt="Church Life Photo 4">
+  <img src="../images/photo5.jpg" alt="Church Life Photo 1">
+  <img src="../images/photo6.jpg" alt="Church Life Photo 2">
+  <img src="../images/photo7.jpg" alt="Church Life Photo 3">
+  <img src="../images/photo8.jpg" alt="Church Life Photo 4">
+  <img src="../images/photo9.jpg" alt="Church Life Photo 3">
+  <img src="../images/photo10.jpg" alt="Church Life Photo 4">
+  <img src="../images/photo11.jpg" alt="Church Life Photo 1">
+  <img src="../images/photo12.jpg" alt="Church Life Photo 2">
+  <img src="../images/photo13.jpg" alt="Church Life Photo 3">
+  <img src="../images/photo14.jpg" alt="Church Life Photo 4">
+  <img src="../images/photo15.jpg" alt="Church Life Photo 1">
+  <img src="../images/photo16.jpg" alt="Church Life Photo 2">
+  <img src="../images/photo17.jpg" alt="Church Life Photo 3">
+  <img src="../images/photo18.jpg" alt="Church Life Photo 4">
+  <img src="../images/photo19.jpg" alt="Church Life Photo 3">
+  <img src="../images/photo20.jpg" alt="Church Life Photo 4">
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <img id="lightboxImg" alt="">
+</div>
+
+<script>
+  const gallery = document.getElementById("gallery");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+
+  gallery.querySelectorAll("img").forEach(img => {
+    img.addEventListener("click", () => {
+      lightboxImg.src = img.src;
+      lightbox.classList.add("active");
+    });
+  });
+
+  lightbox.addEventListener("click", () => {
+    lightbox.classList.remove("active");
+  });
+</script>
+
+</body>
+</html>
