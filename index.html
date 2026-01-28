@@ -44,53 +44,78 @@
   <!-- Skip Link -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Header / Hero -->
-   
-<header role="banner" class="hero relative h-[60vh] w-full flex flex-col bg-cover bg-center hero-bg">
-
-  <!-- Floating Ball -->
-  <img src="images/ball.jpg" alt="Floating Ball" class="ball">
-
-  <!-- Gradient Overlay -->
-  <div class="absolute inset-0 pointer-events-none hero-overlay"></div>
-
-  <!-- Top Navigation -->
-  <nav class="top-nav relative z-10 flex justify-between items-center p-4 bg-off-white/90">
-    <div class="brand flex items-center gap-2">
-      <img src="images/logo.jpg" alt="Gospel Crusade Church of Billerica logo" class="logo h-12 w-auto" />
-      <span class="church-name text-warm-gray font-semibold text-sm md:text-base">
-        GOSPEL CRUSADE CHURCH OF BILLERICA
-      </span>
+  <!-- Navigation -->
+  <nav class="top-nav" role="navigation" aria-label="Main navigation">
+    <div class="brand">
+      <img src="/images/logo.jpg" alt="Gospel Crusade Church logo" class="logo" />
+      <span class="sr-only">Gospel Crusade Church of Billerica</span>
     </div>
 
-    <button class="menu-toggle text-warm-gray text-2xl md:hidden" aria-controls="primary-menu" aria-expanded="false">☰</button>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle menu">☰</button>
 
-    <ul class="nav-links hidden md:flex list-none gap-4 text-warm-gray" id="primary-menu">
-    <li><a href="belong/">Belong & Grow</a></li>
-      <li><a href="serve/">Mision & Serve</a></li>
-      <li><a href="#">Prayer & Care</a></li>
-      <li><a href="worship/">Worship & Music</a></li>
-      <li><a href="#">Giving</a></li>
-      <li><a href="#">Resources</a></li>
+    <ul class="nav-links" id="main-nav">
+      <li><a href="#about">About</a></li>
+      <li><a href="#videos-heading">Media</a></li>
+      <li><a href="#staff-heading">Leaders</a></li>
+      <li><a href="#events-grid">Events</a></li>
+      <li><a href="#prayer-request">Prayer</a></li>
+      <li><a href="#main-content">Give</a></li>
     </ul>
   </nav>
 
-  <!-- Hero Content -->
-  <div class="hero-content relative z-10 flex-1 flex flex-col justify-center items-center text-center px-4 text-off-white">
-    <h1 class="text-3xl md:text-5xl font-bold mb-4 navy-heading framed-heading">
-      Welcome to Gospel Crusade Church of Billerica
-    </h1>
+  <!-- Header / Hero -->
+   
+<header class="hero" id="hero-container">
 
-    <p class="text-lg md:text-xl max-w-2xl mb-6">
-      So welcome each other, just as Christ also welcomed you, to the glory of God. Romans 15:7
-    </p>
+  <!-- Background slideshow layers -->
+  <div class="hero-bg hero-bg-1" aria-hidden="true"></div>
+  <div class="hero-bg hero-bg-2" aria-hidden="true"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
 
-    <button onclick="openPopup()" class="cta-button px-6 py-3 font-semibold rounded-md">
-  Join Us This Sunday
-</button>
+  <!-- Floating Ball -->
+  <img src="images/ball.jpg" alt="" class="ball" aria-hidden="true">
+
+  <!-- HERO CONTENT / SLIDES -->
+  <div class="hero-content" role="region" aria-label="Hero section" aria-live="polite">
+    
+    <!-- FIRST HERO (Welcome) -->
+    <section class="hero-slide slide-1 active" id="hero-slide-1" data-hero="1" aria-hidden="false">
+      <h1>Welcome to Gospel Crusade Church of Billerica</h1>
+      <p>So welcome each other, just as Christ also welcomed you — Romans 15:7</p>
+      <div class="hero-actions">
+        <button class="cta-button" id="joinBtn" type="button">Join Us This Sunday</button>
+      </div>
+    </section>
+
+        <!-- SECOND HERO (Details) -->
+    <section class="hero-slide slide-2" id="hero-slide-2" data-hero="2" aria-hidden="true">
+      <h2>Join Our Team. Serve with Your Gifts.</h2>
+      <p>The church doesn't run on talent alone — it runs on willing hearts. We are building teams that help create an atmosphere where lives can be changed every week.</p>
+
+      <div class="service-details">
+        <div class="detail-box">
+          <span class="detail-icon">🙏</span>
+          <strong>Sunday Worship</strong>
+          <span>1:00 PM – 3:00 PM</span>
+        </div>
+        <div class="detail-box">
+          <span class="detail-icon">📍</span>
+          <strong>Location</strong>
+          <span>30 River St, Billerica, MA</span>
+        </div>
+      </div>
+
+      <div class="hero-search">
+        <input type="text" placeholder="Search ministries, events, messages..." />
+        <button type="button" aria-label="Search">🔍</button>
+      </div>
+    </section>
+
 
   </div>
+
 </header>
+
 
 <style>
 /* Joyful Home Palette */
@@ -104,21 +129,37 @@
 
 /* Hero background */
 .hero-bg {
+  position: absolute;
+  inset: 0;
   background-image: url('images/backgroundhero.jpg');
   background-size: cover;
   background-position: center center;
-  background-color: var(--sky-blue); /* fallback if image fails */
+  background-color: var(--sky-blue);
+  background-repeat: no-repeat;
   image-rendering: -webkit-optimize-contrast;
+  z-index: 0;
+}
+
+.hero-bg-1 {
+  background-image: url('images/backgroundhero.jpg');
+}
+
+.hero-bg-2 {
+  background-image: url('images/backgroundhero.jpg');
+  opacity: 0;
 }
 
 /* Gradient overlay for readability */
 .hero-overlay {
+  position: absolute;
+  inset: 0;
   background: linear-gradient(
     to bottom,
     rgba(255, 255, 255, 0.1) 0%,
     rgba(135, 206, 235, 0.2) 50%,
     rgba(255, 255, 255, 0.05) 100%
   );
+  z-index: 1;
 }
 
 /* Floating ball animation */
@@ -144,59 +185,204 @@
   100% { transform: translateY(0) translateX(0) rotate(0deg); }
 }
 
-/* Make the ball smaller on small screens */
 @media (max-width: 640px) {
   .ball { width: 56px; height:56px; right:1rem; top:14%; animation-duration:5s; }
 }
 
-/* Text shadow for readability */
-.hero-content h1,
-.hero-content p {
+/* Hero content wrapper - centered both vertically and horizontally */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  color: white;
+  min-height: 100%;
+  width: 100%;
+}
+
+/* Hero slides - NOT absolute positioned */
+.hero-slide {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  color: white;
+  width: 100%;
+  opacity: 0;
+  transform: translateX(100px);
+  transition: all 1.5s ease-in-out;
+  pointer-events: none;
+}
+
+.hero-slide.active {
+  display: flex;
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.hero-slide h1,
+.hero-slide h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
   text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  text-align: center;
+  width: 100%;
+}
+
+.hero-slide p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Hero actions */
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+/* Service details */
+.service-details {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.service-details div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Enhanced service details */
+.detail-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 1.5rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.3s ease;
+  min-width: 160px;
+}
+
+.detail-box:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.detail-icon {
+  font-size: 2.5rem;
+  display: block;
+}
+
+.detail-box strong {
+  font-size: 1.1rem;
+}
+
+.detail-box span:last-child {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Hero search */
+.hero-search {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.hero-search input {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  width: 250px;
+  font-size: 1rem;
+}
+
+.hero-search button {
+  padding: 0.75rem 1rem;
+  background: var(--warm-gold);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.hero-search button:hover {
+  background: var(--coral-peach);
 }
 
 /* CTA button */
 .cta-button {
   background-color: var(--warm-gold);
   color: var(--warm-gray);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
   transition: transform 0.2s, background-color 0.2s;
+  font-size: 1rem;
 }
+
 .cta-button:hover {
   background-color: var(--coral-peach);
   transform: scale(1.05);
 }
 
-/* Text colors */
-.text-off-white { color: var(--off-white); }
-.text-warm-gray { color: var(--warm-gray); }
-
-/* Navigation background */
-.top-nav { background-color: var(--off-white); }
-
-/* ====== Responsive tweaks ====== */
-@media (max-width: 1024px) {
-  .hero-content h1 { font-size: 2.5rem; }
-  .hero-content p { font-size: 1.125rem; }
-  .hero-overlay {
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.15) 0%,
-      rgba(135, 206, 235, 0.25) 50%,
-      rgba(255, 255, 255, 0.05) 100%
-    );
-  }
+.cta-button.secondary {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid white;
 }
 
-@media (max-width: 640px) {
-  .hero-content h1 { font-size: 1.875rem; }
-  .hero-content p { font-size: 1rem; padding: 0 1rem; }
-  .hero-overlay {
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.2) 0%,
-      rgba(135, 206, 235, 0.25) 50%,
-      rgba(255, 255, 255, 0.05) 100%
-    );
+.cta-button.secondary:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: var(--warm-gold);
+}
+
+@media (max-width: 768px) {
+  .hero-slide h1,
+  .hero-slide h2 {
+    font-size: 1.875rem;
+  }
+  
+  .hero-slide p {
+    font-size: 1rem;
+  }
+  
+  .hero-search input {
+    width: 100%;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+  }
+  
+  .hero-actions .cta-button {
+    width: 100%;
   }
 }
 </style>
@@ -205,6 +391,35 @@
     <!-- Main Content -->
 
     <main id="main-content">
+
+<!-- Navigation Buttons Section -->
+<section class="nav-buttons-section">
+  <div class="container">
+    <div class="nav-buttons-grid">
+      <a href="media/index.html" class="nav-btn">
+        <span class="nav-icon">🙏</span>
+        <span class="nav-label">Media</span>
+      </a>
+      <a href="/family/index.html" class="nav-btn">
+        <span class="nav-icon">📚</span>
+        <span class="nav-label">Belong & Grow</span>
+      </a>
+      <a href="page3.html" class="nav-btn">
+        <span class="nav-icon">🤝</span>
+        <span class="nav-label">Get Involved</span>
+      </a>
+      <a href="page4.html" class="nav-btn">
+        <span class="nav-icon">💬</span>
+        <span class="nav-label">Contact</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!--about-->
+<section class="about" id="about">
+  <!-- ...existing code... -->
+</section>
 
 
         <!--about-->
@@ -591,6 +806,8 @@
 <script>
 const popup = document.getElementById('sundayPopup');
 const closeBtn = popup.querySelector('.close-btn');
+const joinBtn = document.getElementById('joinBtn');
+const backHeroBtn = document.getElementById('backHeroBtn');
 
 function openPopup() {
   popup.style.display = 'flex';
@@ -607,6 +824,16 @@ function closePopup() {
   }, 350);
 }
 
+// Join Us button opens popup
+if (joinBtn) {
+  joinBtn.addEventListener('click', openPopup);
+}
+
+// Back button closes popup and returns to first hero
+if (backHeroBtn) {
+  backHeroBtn.addEventListener('click', closePopup);
+}
+
 closeBtn.addEventListener('click', closePopup);
 
 popup.addEventListener('click', (e) => {
@@ -618,6 +845,15 @@ document.addEventListener('keydown', (e) => {
 });
 </script>
 
+<script>
+function goToSecondHero() {
+  document.getElementById("second-hero").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+</script>
+
+<script src="script.js"></script>
 
 </body>
 </html>
